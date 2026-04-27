@@ -1,6 +1,8 @@
 package com.pratyush.RateShield.types;
 
 public enum RateLimiterTypes {
-    FIXED_BUCKET,
-    LEAKY_BUCKET;
+    TOKEN_BUCKET,
+    LEAKY_BUCKET,
+    FIXED_WINDOW,
+    SLIDING_WINDOW
 }

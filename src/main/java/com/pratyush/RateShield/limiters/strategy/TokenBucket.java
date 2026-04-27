@@ -5,7 +5,7 @@ import com.pratyush.RateShield.limiters.IRateLimiter;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
-@Component("FIXED_BUCKET")
+@Component("TOKEN_BUCKET")
 public class TokenBucket implements IRateLimiter {
     private RedisTemplate<String, String> redisTemplate;
 

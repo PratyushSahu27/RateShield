@@ -32,7 +32,11 @@ public class RateLimiterService {
         RateLimiterTypes type = RateLimiterTypes.LEAKY_BUCKET;
 
         if(api.contains("user")) {
-            type = RateLimiterTypes.FIXED_BUCKET;
+            type = RateLimiterTypes.TOKEN_BUCKET;
+        }
+
+        if(api.contains("profile")) {
+            type = RateLimiterTypes.FIXED_WINDOW;
         }
 
         return type;

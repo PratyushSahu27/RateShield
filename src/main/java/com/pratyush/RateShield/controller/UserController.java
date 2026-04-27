@@ -1,4 +1,4 @@
-package com.pratyush.RateShield;
+package com.pratyush.RateShield.controller;
 
 import com.pratyush.RateShield.service.RateLimiterService;
 import com.pratyush.RateShield.service.UserService;
