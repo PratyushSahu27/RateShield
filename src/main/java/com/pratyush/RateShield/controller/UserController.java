@@ -2,6 +2,7 @@ package com.pratyush.RateShield.controller;
 
 import com.pratyush.RateShield.service.RateLimiterService;
 import com.pratyush.RateShield.service.UserService;
+import com.pratyush.RateShield.types.ClientTypes;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +24,9 @@ public class UserController {
 
 
     @GetMapping("/" + getUserApi)
-    public ResponseEntity<String> getUser(@RequestParam String userId) {
-        if(!rateLimiterService.isAllowed(getUserApi, userId)) {
+    public ResponseEntity<String> getUser(@RequestParam String userId, @RequestParam String clientType) {
+        ClientTypes clientTypeEnum = ClientTypes.valueOf(clientType.toUpperCase());
+        if(!rateLimiterService.isAllowed(getUserApi, userId, clientTypeEnum)) {
             return ResponseEntity.status(429).body("Too many requests");
         }
 

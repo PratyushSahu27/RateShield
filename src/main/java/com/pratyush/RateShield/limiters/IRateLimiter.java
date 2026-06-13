@@ -1,7 +1,7 @@
 package com.pratyush.RateShield.limiters;
 
-import com.pratyush.RateShield.config.RateLimitConfig;
+import com.pratyush.RateShield.models.RateLimitPolicy;
 
 public interface IRateLimiter {
-    public boolean isAllowed(String key, RateLimitConfig rateLimitConfig);
+    public boolean isAllowed(String key, RateLimitPolicy rateLimitPolicy);
 }

@@ -1,7 +1,6 @@
 package com.pratyush.RateShield.repository;
 
-import com.pratyush.RateShield.config.RateLimitConfig;
-import com.pratyush.RateShield.limiters.strategy.TokenBucket;
+import com.pratyush.RateShield.models.RateLimitPolicy;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +25,7 @@ public class RedisRepository {
      * @param config
      * @return
      */
-    public boolean incrementAndGet(String key, RateLimitConfig config) {
+    public boolean incrementAndGet(String key, RateLimitPolicy config) {
         long result = redisTemplate.execute(
                 fixedWindowScript,
                 Collections.singletonList(key),
@@ -44,7 +43,7 @@ public class RedisRepository {
      * @param config
      * @return
      */
-    public boolean tokenBucketScript(String tokenKey, String lastRefillKey, RateLimitConfig config) {
+    public boolean tokenBucketScript(String tokenKey, String lastRefillKey, RateLimitPolicy config) {
 
             long result = redisTemplate.execute(
                     tokenBucketScript,

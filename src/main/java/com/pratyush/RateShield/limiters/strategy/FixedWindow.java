@@ -1,7 +1,7 @@
 package com.pratyush.RateShield.limiters.strategy;
 
-import com.pratyush.RateShield.config.RateLimitConfig;
 import com.pratyush.RateShield.limiters.IRateLimiter;
+import com.pratyush.RateShield.models.RateLimitPolicy;
 import com.pratyush.RateShield.repository.RedisRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,8 +17,8 @@ public class FixedWindow implements IRateLimiter {
     }
 
     @Override
-    public boolean isAllowed(String key, RateLimitConfig rateLimitConfig) {
-        LOGGER.info("FixedWindow: isAllowed called for key: {}, rateLimit: {}", key, rateLimitConfig.getLimit());
-        return repository.incrementAndGet(key, rateLimitConfig);
+    public boolean isAllowed(String key, RateLimitPolicy rateLimitPolicy) {
+        LOGGER.info("FixedWindow: isAllowed called for key: {}, rateLimit: {}", key, rateLimitPolicy.getLimit());
+        return repository.incrementAndGet(key, rateLimitPolicy);
     }
 }
